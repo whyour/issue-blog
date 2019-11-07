@@ -6,7 +6,7 @@
   "keywords": ["issue", "blog", "github"],
   "icon": "https://image.whyour.cn/blogger.png",
 	"description": "A vscode plugin to create a blog with issue",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "whyour",
 	"repository": "https://github.com/whyour/issue-blog",
 	"engines": {
