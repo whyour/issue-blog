@@ -13,12 +13,16 @@ export class AuthConfiguration {
 export class RepoConfiguration {
   owner?: string = '';
   repo?: string = '';
+}
+
+export class IssueInfo {
   title?: string = '';
+  body?: string = '';
 }
 
 export class Github {
   octokit: Octokit;
-  configuration: Configuration =new Configuration();
+  configuration: Configuration = new Configuration();
   constructor() {
     const result = this.checkAuthConfiguration(this.configuration.authConfig);
     this.octokit = new Octokit({
@@ -36,8 +40,8 @@ export class Github {
   }
 
   private checkRepoConfiguration(configuration: RepoConfiguration) {
-    const { owner = '', repo = '', title = '' } = configuration;
-    return { owner, repo, title };
+    const { owner = '', repo = '' } = configuration;
+    return { owner, repo };
   }
 
   async getIssues(): Promise<Octokit.Response<Octokit.IssuesListForRepoResponseItem[]>> {
@@ -45,8 +49,8 @@ export class Github {
     return this.octokit.issues.listForRepo(result);
   }
 
-  async createIssue(): Promise<Octokit.Response<Octokit.IssuesCreateResponse>> {
+  async createIssue({ title = '', body = '' }: IssueInfo): Promise<Octokit.Response<Octokit.IssuesCreateResponse>> {
     const result = this.checkRepoConfiguration(this.configuration.repoConfig);
-    return this.octokit.issues.create(result);
+    return this.octokit.issues.create({ ...result, title, body });
   }
 }

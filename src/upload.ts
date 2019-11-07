@@ -1,4 +1,4 @@
-import { Github } from './github';
+import { Github, IssueInfo } from './github';
 import { Configuration } from './configuration';
 export class Upload {
   github: Github;
@@ -6,7 +6,13 @@ export class Upload {
   constructor() {
     this.github = new Github();
     this.config = new Configuration();
-    // this.github.getIssues();
-    this.github.createIssue();
+  }
+
+  async createIssue(issueInfo: IssueInfo) {
+    await this.github.createIssue(issueInfo);    
+  }
+
+  getIssues() {
+    this.github.getIssues();    
   }
 }

@@ -7,23 +7,27 @@
     "vscode": "^1.39.0"
   },
   "categories": [
-    "blog",
-    "issue"
+    "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.helloWorld"
+    "onCommand:extension.createIssue",
+    "onCommand:extension.getIssues"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "extension.helloWorld",
-        "title": "Hello World"
+        "command": "extension.createIssue",
+        "title": "Create Issue"
+      },
+      {
+        "command": "extension.getIssues",
+        "title": "Get Issues"
       }
     ],
     "configuration": {
       "type": "object",
-      "title": "Code插件demo",
+      "title": "Use Issue Create Blog",
       "properties": {
         "issue.username": {
           "type": "string",
