@@ -4,7 +4,7 @@
   "author": "whyour",
   "license": "MIT",
   "keywords": ["issue", "blog", "github"],
-  "icon": "https://github.com/whyour/issue-blog/blob/master/src/image/icon.png",
+  "icon": "https://image.whyour.cn/blogger.png",
 	"description": "A vscode plugin to create a blog with issue",
 	"version": "0.0.1",
 	"publisher": "whyour",
