@@ -1,7 +1,7 @@
 {
   "name": "issue-blog",
   "displayName": "issue-blog",
-  "description": "",
+  "description": "A vscode plugin to create a blog with issue",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.39.0"

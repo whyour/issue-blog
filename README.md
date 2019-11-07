@@ -1,65 +1,30 @@
 # issue-blog README
 
-This is the README for your extension "issue-blog". After writing up a brief description, we recommend including the following sections.
-
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+在 vscode 中以当前文档来在指定仓库中创建 issue
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+```bash
+yarn add @octokit/rest
+// or
+npm i @octokit/rest
+```
 
 ## Extension Settings
+`// username/password 和 token 只需要提供一种`
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+* `issue.username`: 设置 github 用户名
+* `issue.password`: 设置 github 密码
+* `issue.token`: 设置 github person access token
+* `issue.owner`: 设置 github 仓库 owner
+* `issue.repo`: 设置 github issue-blog 仓库名
 
-For example:
+### 0.0.1
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+支持根据文档创建 issue
 
 -----------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
