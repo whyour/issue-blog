@@ -3,6 +3,8 @@
   "displayName": "issue-blog",
   "description": "A vscode plugin to create a blog with issue",
   "version": "0.0.1",
+  "publisher": "whyour",
+  "repository": "https://github.com/whyour/issue-blog",
   "engines": {
     "vscode": "^1.39.0"
   },
@@ -40,8 +42,8 @@
           "default": "",
           "description": "password",
           "scope": "window"
-				},
-				"issue.owner": {
+        },
+        "issue.owner": {
           "type": "string",
           "default": "",
           "description": "owner",
@@ -52,8 +54,8 @@
           "default": "",
           "description": "repo",
           "scope": "window"
-				},
-				"issue.token": {
+        },
+        "issue.token": {
           "type": "string",
           "default": "",
           "description": "token",
