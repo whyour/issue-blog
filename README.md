@@ -1,8 +1,13 @@
-# issue-blog README
+# Issue Blog
+
+一个用 github issue 创建博客的 vscode 插件
+
+A vscode plugin to create a blog with issue
 
 ## Features
 
-在 vscode 中以当前文档来在指定仓库中创建 issue
+- [x] 在 vscode 中以当前文档来在指定仓库中创建 issue
+- [x] 支持直接读取 markdown 文档中的 yaml header 中的 title 作为 issue 标题
 
 ## Requirements
 
@@ -21,9 +26,17 @@ npm i @octokit/rest
 * `issue.owner`: 设置 github 仓库 owner
 * `issue.repo`: 设置 github issue-blog 仓库名
 
+### 0.0.3
+
+支持直接读取 markdown 文档中的 yaml header 中的 title 作为 issue 标题
+
+Support for directly reading the title from the yaml header in the markdown document as the issue title
+
 ### 0.0.1
 
-支持根据文档创建 issue
+支持根据 markdown 文档创建 issue
+
+Support for creating issues based on markdown documents
 
 -----------------------------------------------------------------------------------------------------------
 

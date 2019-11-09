@@ -1,10 +1,14 @@
 {
 	"name": "issue-blog",
-  "displayName": "Issue Blog",
-  "author": "whyour",
-  "license": "MIT",
-  "keywords": ["issue", "blog", "github"],
-  "icon": "https://image.whyour.cn/blogger.png",
+	"displayName": "Issue Blog",
+	"author": "whyour",
+	"license": "MIT",
+	"keywords": [
+		"issue",
+		"blog",
+		"github"
+	],
+	"icon": "https://image.whyour.cn/blogger.png",
 	"description": "A vscode plugin to create a blog with issue",
 	"version": "0.0.2",
 	"publisher": "whyour",
@@ -87,7 +91,8 @@
 		"vscode-test": "^1.2.2"
 	},
 	"dependencies": {
-		"@octokit/rest": "^16.34.1"
+		"@octokit/rest": "^16.34.1",
+		"front-matter": "^3.0.2"
 	},
 	"__metadata": {
 		"id": "af5d7c94-6362-4e44-bab4-4c0b9e40d14f",

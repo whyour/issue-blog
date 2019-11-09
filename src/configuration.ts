@@ -109,3 +109,20 @@ export class Configuration {
     return { ...result, owner, repo };
   }
 }
+
+export async function checkConfiguration() {
+  const configuration = new Configuration();
+  const { authConfig, repoConfig} = configuration;
+  if (
+    !authConfig.token &&
+    !authConfig.username && !authConfig.password
+  ) {
+    await configuration.promptAuthConfiguration();
+  }
+  if (
+    !repoConfig.owner &&
+    !repoConfig.repo
+  ) {
+    await configuration.promptRepoConfiguration();
+  }
+}
