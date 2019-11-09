@@ -8,7 +8,7 @@
 		"blog",
 		"github"
 	],
-	"icon": "https://image.whyour.cn/blogger.png",
+	"icon": "resource/images/blogger.png",
 	"description": "A vscode plugin to create a blog with issue",
 	"version": "0.0.2",
 	"publisher": "whyour",
