@@ -4,17 +4,31 @@
 
 A vscode plugin to create a blog with issue
 
+新建博客  create blog
+
+![create blog](resource/images/one.jpg)
+
+新建 issue  create issue
+
+![create issue](resource/images/two.jpg)
+
 ## Features
 
 - [x] 在 vscode 中以当前文档来在指定仓库中创建 issue
 - [x] 支持直接读取 markdown 文档中的 yaml header 中的 title 作为 issue 标题
+- [x] 支持创建带 title 的 markdown 文档
 
-## Requirements
+## Commands
 
-```bash
-yarn add @octokit/rest
-// or
-npm i @octokit/rest
+```json
+{
+  "command": "extension.createIssue", // 往github仓库创建issue
+  "title": "Create Issue"
+},
+{
+  "command": "extension.createBlog", // 创建新的md博客文档
+  "title": "Create Blog"
+}
 ```
 
 ## Extension Settings
@@ -25,6 +39,12 @@ npm i @octokit/rest
 * `issue.token`: 设置 github person access token
 * `issue.owner`: 设置 github 仓库 owner
 * `issue.repo`: 设置 github issue-blog 仓库名
+
+### 0.0.3
+
+支持创建带 title 的 markdown 文档
+
+Support for creating markdown documents with title
 
 ### 0.0.3
 

@@ -21,7 +21,8 @@
 	],
 	"activationEvents": [
 		"onCommand:extension.createIssue",
-		"onCommand:extension.getIssues"
+		"onCommand:extension.getIssues",
+		"onCommand:extension.createBlog"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -33,6 +34,10 @@
 			{
 				"command": "extension.getIssues",
 				"title": "Get Issues"
+			},
+			{
+				"command": "extension.createBlog",
+				"title": "Create Blog"
 			}
 		],
 		"configuration": {
@@ -81,6 +86,7 @@
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
+		"@types/js-yaml": "^3.12.1",
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.11.7",
 		"@types/vscode": "^1.39.0",
@@ -92,7 +98,7 @@
 	},
 	"dependencies": {
 		"@octokit/rest": "^16.34.1",
-		"front-matter": "^3.0.2"
+		"js-yaml": "^3.13.1"
 	},
 	"__metadata": {
 		"id": "af5d7c94-6362-4e44-bab4-4c0b9e40d14f",
