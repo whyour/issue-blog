@@ -40,7 +40,9 @@ A vscode plugin to create a blog with issue
 * `issue.owner`: 设置 github 仓库 owner
 * `issue.repo`: 设置 github issue-blog 仓库名
 
-### 0.0.3
+## Version Feature
+
+### 0.0.4
 
 支持创建带 title 的 markdown 文档
 
