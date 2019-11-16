@@ -9,10 +9,14 @@ export class Upload {
   }
 
   async createIssue(issueInfo: IssueInfo) {
-    return await this.github.createIssue(issueInfo);    
+    return await this.github.createIssue(issueInfo);
   }
 
   async getIssues() {
-    return await this.github.getIssues();    
+    return await this.github.getIssues();
+  }
+
+  async getRepos() {
+    return await this.github.getRepos();
   }
 }

@@ -1,4 +1,4 @@
-import * as Octokit from "@octokit/rest";
+import * as Octokit from '@octokit/rest';
 import { Configuration } from './configuration';
 
 export class AuthConfiguration {
@@ -23,10 +23,12 @@ export class IssueInfo {
 export class Github {
   octokit: Octokit;
   configuration: Configuration = new Configuration();
+  repo: any;
   constructor() {
-    const result = this.checkAuthConfiguration(this.configuration.authConfig);
+    const auth = this.checkAuthConfiguration(this.configuration.authConfig);
+    this.repo = this.checkRepoConfiguration(this.configuration.repoConfig);
     this.octokit = new Octokit({
-      auth: result
+      auth: auth
     });
   }
 
@@ -45,12 +47,14 @@ export class Github {
   }
 
   async getIssues(): Promise<Octokit.Response<Octokit.IssuesListForRepoResponseItem[]>> {
-    const result = this.checkRepoConfiguration(this.configuration.repoConfig);
-    return this.octokit.issues.listForRepo(result);
+    return this.octokit.issues.listForRepo(this.repo);
   }
 
   async createIssue({ title = '', body = '' }: IssueInfo): Promise<Octokit.Response<Octokit.IssuesCreateResponse>> {
-    const result = this.checkRepoConfiguration(this.configuration.repoConfig);
-    return this.octokit.issues.create({ ...result, title, body });
+    return this.octokit.issues.create({ ...this.repo, title, body });
+  }
+
+  async getRepos(): Promise<Octokit.Response<any>>  {
+    return this.octokit.repos.list();
   }
 }

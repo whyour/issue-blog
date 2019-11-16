@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-import { checkConfiguration } from "./configuration";
+import { checkConfiguration, getRepoList } from "./configuration";
 import { Upload } from "./upload";
 import { IssueInfo } from "./github";
 import { markdownParse, getFileValue, getFileContent } from "./markdown";
@@ -37,4 +37,12 @@ export async function createBlog() {
   fs.appendFileSync(filePath, content);
   const openPath = vscode.Uri.file(filePath);
   await vscode.window.showTextDocument(openPath);
+}
+
+export async function getRepos() {
+  await checkConfiguration();
+  const upload = new Upload();	
+  const repos = await upload.getRepos();
+  console.log(repos);
+  await getRepoList(repos);
 }
