@@ -30,19 +30,19 @@
 		"commands": [
 			{
 				"command": "extension.createIssue",
-				"title": "Create Issue"
+				"title": "Issue: Create Issue"
 			},
 			{
 				"command": "extension.updateIssue",
-				"title": "Update Issue"
+				"title": "Issue: Update Issue"
 			},
 			{
 				"command": "extension.getIssues",
-				"title": "Get Issues"
+				"title": "Issue: Get Issues"
 			},
 			{
 				"command": "extension.createBlog",
-				"title": "Create Blog"
+				"title": "Issue: Create Blog"
 			}
 		],
 		"configuration": {
