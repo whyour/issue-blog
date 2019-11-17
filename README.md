@@ -4,11 +4,11 @@
 
 A vscode plugin to create a blog with issue
 
-新建空文档 `Create a new empty document`
+* 新建空文档 `Create a new empty document`
 
 ![create blog](resource/images/one.jpg)
 
-新建 issue `Create issue`
+* 新建 issue `Create issue`
 
 ![create issue](resource/images/two.jpg)
 
