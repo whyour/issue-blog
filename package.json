@@ -12,7 +12,10 @@
 	"description": "A vscode plugin to create a blog with issue",
 	"version": "0.0.5",
 	"publisher": "whyour",
-	"repository": "https://github.com/whyour/issue-blog",
+	"repository": {
+		"url": "https://github.com/whyour/issue-blog",
+		"type": "git"
+	},
 	"engines": {
 		"vscode": "^1.39.0"
 	},
