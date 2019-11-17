@@ -45,8 +45,8 @@ export function stringify(obj: any) {
     throw new TypeError('obj is required!');
   }
 
-  const content = obj._content || '';
-  delete obj._content;
+  const content = obj.body || '';
+  delete obj.body;
 
   if (!Object.keys(obj).length) {
     return content;
@@ -55,7 +55,7 @@ export function stringify(obj: any) {
   const separator = '---';
   let result = '---\n';
   result += stringifyYAML(obj);
-  result += `${separator}\n${content}`;
+  result += `${separator}\n\n${content}`;
 
   return result;
 }

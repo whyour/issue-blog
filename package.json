@@ -21,6 +21,7 @@
 	],
 	"activationEvents": [
 		"onCommand:extension.createIssue",
+		"onCommand:extension.updateIssue",
 		"onCommand:extension.getIssues",
 		"onCommand:extension.createBlog"
 	],
@@ -30,6 +31,10 @@
 			{
 				"command": "extension.createIssue",
 				"title": "Create Issue"
+			},
+			{
+				"command": "extension.updateIssue",
+				"title": "Update Issue"
 			},
 			{
 				"command": "extension.getIssues",
@@ -89,6 +94,7 @@
 		"@types/js-yaml": "^3.12.1",
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.11.7",
+		"@types/open": "^6.2.1",
 		"@types/vscode": "^1.39.0",
 		"glob": "^7.1.5",
 		"mocha": "^6.2.2",
@@ -98,7 +104,8 @@
 	},
 	"dependencies": {
 		"@octokit/rest": "^16.34.1",
-		"js-yaml": "^3.13.1"
+		"js-yaml": "^3.13.1",
+		"open": "^7.0.0"
 	},
 	"__metadata": {
 		"id": "af5d7c94-6362-4e44-bab4-4c0b9e40d14f",

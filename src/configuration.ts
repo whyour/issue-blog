@@ -1,6 +1,6 @@
 import { AuthConfiguration, RepoConfiguration } from './github';
 import * as vscode from 'vscode';
-import Octokit = require('@octokit/rest');
+import * as Octokit from '@octokit/rest';
 
 export class Configuration {
   configuration: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration();

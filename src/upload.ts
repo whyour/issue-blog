@@ -1,5 +1,7 @@
 import { Github, IssueInfo } from './github';
 import { Configuration } from './configuration';
+import * as Octokit from '@octokit/rest';
+
 export class Upload {
   github: Github;
   config: Configuration;
@@ -10,6 +12,10 @@ export class Upload {
 
   async createIssue(issueInfo: IssueInfo) {
     return await this.github.createIssue(issueInfo);
+  }
+
+  async updateIssue(issueInfo: Octokit.IssuesUpdateParamsDeprecatedAssignee) {
+    return await this.github.updateIssue(issueInfo);
   }
 
   async getIssues() {

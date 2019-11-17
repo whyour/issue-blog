@@ -54,6 +54,10 @@ export class Github {
     return this.octokit.issues.create({ ...this.repo, title, body });
   }
 
+  async updateIssue({ title = '', body = '', issue_number }: Octokit.IssuesUpdateParamsDeprecatedAssignee): Promise<Octokit.Response<Octokit.IssuesUpdateResponse>> {
+    return this.octokit.issues.update({ ...this.repo, title, body, issue_number });
+  }
+
   async getRepos(): Promise<Octokit.Response<any>>  {
     return this.octokit.repos.list();
   }
