@@ -36,6 +36,12 @@ A vscode plugin to create a blog with issue
 }
 ```
 
+## Tips
+
+文档中的图片可以使用[vs-picgo](https://github.com/PicGo/vs-picgo)可以用默认的[SM.MS](https://sm.ms/)先上传之后，然后创建 issue 之后，会自动上传到 github，如果引用本地图片，创建 issue 之后会无法引用照片。
+
+Document images can be used to [v - picgo](https://github.com/PicGo/vs-picgo) can use the default [SM. MS](https://sm.ms/) after upload first, and then create issue, will automatically be uploaded to the lot, if the reference images, local created after the issue will be unable to reference pictures.
+
 ## Extension Settings
 `// username/password 和 token 只需要提供一种`
 
