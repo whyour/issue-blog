@@ -99,7 +99,7 @@
 		"@types/node": "^12.11.7",
 		"@types/open": "^6.2.1",
 		"@types/vscode": "^1.39.0",
-		"glob": "^7.1.5",
+		"glob": "^7.1.6",
 		"mocha": "^6.2.2",
 		"tslint": "^5.20.0",
 		"typescript": "^3.6.4",
