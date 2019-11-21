@@ -106,7 +106,7 @@
 		"vscode-test": "^1.2.3"
 	},
 	"dependencies": {
-		"@octokit/rest": "^16.34.1",
+		"@octokit/rest": "^16.35.0",
 		"js-yaml": "^3.13.1",
 		"open": "^7.0.0"
 	},
