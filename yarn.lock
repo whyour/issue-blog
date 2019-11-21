@@ -964,10 +964,10 @@ universal-user-agent@^4.0.0:
   dependencies:
     os-name "^3.1.0"
 
-vscode-test@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/vscode-test/-/vscode-test-1.2.2.tgz#ce4b60e65f000e149d13e77fe31b4f7052989c0e"
-  integrity sha512-7bF8tINeynZ52Lg8vsJI2mFKnXD0HtVJoOfYzEUhMspo44lPRTcVFSg+PIY3jy8OTd3dMFaxAscBznCvGgdM2g==
+vscode-test@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/vscode-test/-/vscode-test-1.2.3.tgz#b7be4e0b6113be425993efdf0a46a70b15a65a7e"
+  integrity sha512-mKRTNso33NaUULiPBFg6zRjyntjcCpIgkrogyPQuKlvoQREQR8jLKN5UD4L5rkTSD+oBhcKtaLR2/g34FexURw==
   dependencies:
     http-proxy-agent "^2.1.0"
     https-proxy-agent "^2.2.4"
