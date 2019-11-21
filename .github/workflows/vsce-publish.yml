@@ -1,0 +1,20 @@
+name: Publish with VSCE
+
+on:
+    release:
+      types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - run: npm install
+    - run: npm install -g vsce
+    - name: vsce publish 
+      run: vsce publish -p "${{ secrets.VSCE_TOKEN }}"
