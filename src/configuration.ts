@@ -15,7 +15,7 @@ export class Configuration {
     const password: string | undefined = this.configuration.get('issue.password');
     const owner: string | undefined = this.configuration.get('issue.owner');
     const repo: string | undefined = this.configuration.get('issue.repo');
-    this.repoConfig = { owner, repo };
+    this.repoConfig = { owner: owner || '', repo: repo || '' };
     this.authConfig = { token, username, password };
   }
 
@@ -51,8 +51,8 @@ export class Configuration {
           username = this.repoConfig.owner;
         } else if (!this.authConfig.username) {
           username = await vscode.window.showInputBox({
-            prompt: '请输入用户名',
-            placeHolder: 'Please enter username'
+            prompt: '请输入用户名/邮箱',
+            placeHolder: 'Please enter username or email'
           });
         }
         if (!this.authConfig.password) {

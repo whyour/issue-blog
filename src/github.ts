@@ -11,8 +11,8 @@ export class AuthConfiguration {
 }
 
 export class RepoConfiguration {
-  owner?: string = '';
-  repo?: string = '';
+  owner: string = '';
+  repo: string = '';
 }
 
 export class IssueInfo {
@@ -23,7 +23,7 @@ export class IssueInfo {
 export class Github {
   octokit: Octokit;
   configuration: Configuration = new Configuration();
-  repo: any;
+  repo: RepoConfiguration;
   constructor() {
     const auth = this.checkAuthConfiguration(this.configuration.authConfig);
     this.repo = this.checkRepoConfiguration(this.configuration.repoConfig);
@@ -60,5 +60,15 @@ export class Github {
 
   async getRepos(): Promise<Octokit.Response<any>>  {
     return this.octokit.repos.list();
+  }
+
+  async getEvents(): Promise<Octokit.Response<any>>  {
+    return this.octokit.activity.listNotifications({ all: true });
+    // return this.octokit.activity.listWatchedReposForAuthenticatedUser()
+    // return this.octokit.activity.listReceivedEventsForUser({
+    //   username: 'whyour',
+    //   per_page: 100,
+    //   page: 1
+    // })
   }
 }
