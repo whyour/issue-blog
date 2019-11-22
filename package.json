@@ -10,7 +10,7 @@
 	],
 	"icon": "resource/images/blogger.png",
 	"description": "A vscode plugin to create a blog with issue",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"publisher": "whyour",
 	"repository": {
 		"url": "https://github.com/whyour/issue-blog",
@@ -97,7 +97,6 @@
 		"@types/js-yaml": "^3.12.1",
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.12.11",
-		"@types/open": "^6.2.1",
 		"@types/vscode": "^1.40.0",
 		"glob": "^7.1.6",
 		"mocha": "^6.2.2",
