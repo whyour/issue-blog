@@ -46,8 +46,12 @@ export class Github {
     return { owner, repo };
   }
 
-  async getIssues(): Promise<Octokit.Response<Octokit.IssuesListForRepoResponseItem[]>> {
-    return this.octokit.issues.listForRepo(this.repo);
+  async getIssues(param?: Omit<Octokit.IssuesListForRepoParams,'repo' | 'owner'>): Promise<Octokit.Response<Octokit.IssuesListForRepoResponseItem[]>> {
+    return this.octokit.issues.listForRepo({...this.repo, ...param});
+  }
+
+  async getPullRequests(param?: Omit<Octokit.PullsListParams,'repo' | 'owner'>): Promise<Octokit.Response<Octokit.PullsListResponse>> {
+    return this.octokit.pulls.list({...this.repo, ...param});
   }
 
   async createIssue({ title = '', body = '' }: IssueInfo): Promise<Octokit.Response<Octokit.IssuesCreateResponse>> {

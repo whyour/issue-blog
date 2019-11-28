@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { createIssue, getIssues, createBlog, getRepos, updateIssue } from './commands';
+import { createIssue, getIssues, createBlog, getRepos, updateIssue, getPullRequests } from './commands';
 export function activate(context: vscode.ExtensionContext) {
   console.log('Congratulations, your extension "issue-blog" is now active!');
   const _createIssue = vscode.commands.registerCommand(
@@ -17,6 +17,11 @@ export function activate(context: vscode.ExtensionContext) {
     getIssues
   );
 
+  const _getPullRequests = vscode.commands.registerCommand(
+    'extension.getPullRequests',
+    getPullRequests
+  );
+
   const _createBlog = vscode.commands.registerCommand(
     'extension.createBlog',
     createBlog
@@ -27,7 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
     getRepos
   );
   
-  const dispose = [_createIssue, _updateIssue, _getIssues, _createBlog];
+  const dispose = [_createIssue, _updateIssue, _getIssues, _createBlog, _getPullRequests];
   context.subscriptions.push(...dispose);
 }
 

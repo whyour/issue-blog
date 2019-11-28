@@ -36,9 +36,41 @@ export async function updateIssue() {
 export async function getIssues() {
   await checkConfiguration();
   const upload = new Upload();	
-  const issues = await upload.getIssues();
-  console.log(issues);
-  vscode.window.showInformationMessage('获取issue成功');
+  const issues = await upload.getIssues({state: 'open'});
+  if (issues.data && issues.data.length > 0) {
+    const _issues = issues.data.map(x => {
+      return { label: x.title, description: x.html_url };
+    });
+    const _issue = await vscode.window.showQuickPick(
+      _issues,
+      { placeHolder: 'Select the issue you want to open' }
+    );  
+    if (_issue) {
+      await open(_issue.description);
+    }
+  } else {
+    vscode.window.showInformationMessage('暂无issue');
+  }
+}
+
+export async function getPullRequests() {
+  await checkConfiguration();
+  const upload = new Upload();	
+  const pullRequests = await upload.getPullRequests({state: 'open'});
+  if (pullRequests.data && pullRequests.data.length > 0) {
+    const _issues = pullRequests.data.map(x => {
+      return { label: x.title, description: x.html_url };
+    });
+    const _issue = await vscode.window.showQuickPick(
+      _issues,
+      { placeHolder: 'Select the pull request you want to open' }
+    );  
+    if (_issue) {
+      await open(_issue.description);
+    }
+  } else {
+    vscode.window.showInformationMessage('暂无pull request');
+  }
 }
 
 export async function createBlog() {

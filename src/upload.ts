@@ -18,8 +18,12 @@ export class Upload {
     return await this.github.updateIssue(issueInfo);
   }
 
-  async getIssues() {
-    return await this.github.getIssues();
+  async getIssues(param?: Omit<Octokit.IssuesListForRepoParams,'repo' | 'owner'>) {
+    return await this.github.getIssues(param);
+  }
+
+  async getPullRequests(param?: Omit<Octokit.PullsListParams,'repo' | 'owner'>) {
+    return await this.github.getPullRequests(param);
   }
 
   async getRepos() {

@@ -18,21 +18,31 @@ A vscode plugin to create a blog with issue
 - [x] 支持直接读取 markdown 文档中的 yaml header 中的 title 作为 issue 标题
 - [x] 支持创建带 title 的 markdown 文档
 - [x] 支持更新已存在的 issue
+- [x] 支持获取仓库中的 issue 列表，可选择 issue 在默认浏览器中打开
+- [x] 支持获取仓库中的 pr 列表，可选择 pr 在默认浏览器中打开
 
 ## Commands
 
 ```json
 {
-  "command": "extension.createIssue", // 往github仓库创建issue
+  "command": "extension.createIssue",
   "title": "Create Issue"
 },
 {
-  "command": "extension.updateIssue", // 更新仓库中的issue
+  "command": "extension.updateIssue",
   "title": "Update Issue"
 },
 {
-  "command": "extension.createBlog", // 创建新的md博客文档
+  "command": "extension.createBlog", // Create a new empty document
   "title": "Create Blog"
+}，
+{
+  "command": "extension.getIssues",
+  "title": "Issue: Get Issues"
+},
+{
+  "command": "extension.getPullRequests",
+  "title": "Issue: Get PullRequests"
 }
 ```
 
@@ -53,29 +63,32 @@ Document images can be used to [v - picgo](https://github.com/PicGo/vs-picgo) ca
 
 ## Version Feature
 
+### 0.0.7
+
+* 支持获取仓库中的 issue 列表，可选择 issue 在默认浏览器中打开
+* Supports to get the issue list in the repository, optionally open issue in the default browser
+* 支持获取仓库中的 pr 列表，可选择 pr 在默认浏览器中打开
+* Support to get a list of pr in the repository, optionally open pr in the default browser
+
 ### 0.0.5
 
-支持根据 yaml header 中的 issue_number 更新 issue
-
-Support for updating the issue based on the issue_number in the yaml header
+* 支持根据 yaml header 中的 issue_number 更新 issue
+* Support for updating the issue based on the issue_number in the yaml header
 
 ### 0.0.4
 
-支持创建带 title 的 markdown 文档
-
-Support for creating markdown documents with title
+* 支持创建带 title 的 markdown 文档
+* Support for creating markdown documents with title
 
 ### 0.0.3
 
-支持直接读取 markdown 文档中的 yaml header 中的 title 作为 issue 标题
-
-Support for directly reading the title from the yaml header in the markdown document as the issue title
+* 支持直接读取 markdown 文档中的 yaml header 中的 title 作为 issue 标题
+* Support for directly reading the title from the yaml header in the markdown document as the issue title
 
 ### 0.0.1
 
-支持根据 markdown 文档创建 issue
-
-Support for creating issues based on markdown documents
+* 支持根据 markdown 文档创建 issue
+* Support for creating issues based on markdown documents
 
 -----------------------------------------------------------------------------------------------------------
 

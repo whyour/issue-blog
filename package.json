@@ -10,7 +10,7 @@
 	],
 	"icon": "resource/images/blogger.png",
 	"description": "A vscode plugin to create a blog with issue",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"publisher": "whyour",
 	"repository": {
 		"url": "https://github.com/whyour/issue-blog",
@@ -26,7 +26,8 @@
 		"onCommand:extension.createIssue",
 		"onCommand:extension.updateIssue",
 		"onCommand:extension.getIssues",
-		"onCommand:extension.createBlog"
+		"onCommand:extension.createBlog",
+		"onCommand:extension.getPullRequests"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -46,6 +47,10 @@
 			{
 				"command": "extension.createBlog",
 				"title": "Issue: Create Blog"
+			},
+			{
+				"command": "extension.getPullRequests",
+				"title": "Issue: Get PullRequests"
 			}
 		],
 		"configuration": {
