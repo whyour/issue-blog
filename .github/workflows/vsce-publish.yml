@@ -1,7 +1,7 @@
 name: Publish with VSCE
 on:
   pull_request:
-    types: [closed]
+    types: [assigned]
 jobs:
   build:
     runs-on: ubuntu-latest
