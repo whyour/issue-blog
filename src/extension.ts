@@ -31,8 +31,8 @@ export function activate(context: vscode.ExtensionContext) {
     'extension.getRepos',
     getRepos
   );
-  
-  const dispose = [_createIssue, _updateIssue, _getIssues, _createBlog, _getPullRequests];
+
+  const dispose = [_createIssue, _updateIssue, _getIssues, _createBlog, _getPullRequests, _getRepos];
   context.subscriptions.push(...dispose);
 }
 

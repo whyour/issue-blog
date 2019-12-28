@@ -7,10 +7,11 @@ import { IssueInfo } from "./github";
 import { markdownParse, getFileValue, getFileContent, markdownStringify } from "./markdown";
 import * as Octokit from '@octokit/rest';
 import * as open from 'open';
+import { GitCommand } from './git';
 
 export async function createIssue() {
-  await checkConfiguration();
-  const upload = new Upload();	
+  const config = await checkConfiguration();
+  const upload = new Upload(config);
   const result: IssueInfo = await markdownParse(upload);
   const issue = await upload.createIssue(result);
   const { number, html_url } = issue.data;
@@ -22,8 +23,8 @@ export async function createIssue() {
 }
 
 export async function updateIssue() {
-  await checkConfiguration();
-  const upload = new Upload();	
+  const config = await checkConfiguration();
+  const upload = new Upload(config);
   const result = await markdownParse(upload) as Octokit.IssuesUpdateParamsDeprecatedAssignee;
   if (!result.issue_number) {
     vscode.window.showErrorMessage('当前文档尚未关联issue，请先创建issue或者手动在yaml header中添加issue_number指定要更新的issue');
@@ -34,8 +35,8 @@ export async function updateIssue() {
 }
 
 export async function getIssues() {
-  await checkConfiguration();
-  const upload = new Upload();	
+  const config = await checkConfiguration();
+  const upload = new Upload(config);	
   const issues = await upload.getIssues({state: 'open'});
   if (issues.data && issues.data.length > 0) {
     const _issues = issues.data.map(x => {
@@ -54,8 +55,8 @@ export async function getIssues() {
 }
 
 export async function getPullRequests() {
-  await checkConfiguration();
-  const upload = new Upload();	
+  const config = await checkConfiguration();
+  const upload = new Upload(config);
   const pullRequests = await upload.getPullRequests({state: 'open'});
   if (pullRequests.data && pullRequests.data.length > 0) {
     const _issues = pullRequests.data.map(x => {
@@ -91,9 +92,11 @@ export async function createBlog() {
 }
 
 export async function getRepos() {
-  await checkConfiguration();
-  const upload = new Upload();	
-  const repos = await upload.getRepos();
-  console.log(repos);
-  await getRepoList(repos);
+  const config = await checkConfiguration();
+  const upload = new Upload(config);
+  // const repos = await upload.getRepos();
+  // console.log(repos);
+  const git = new GitCommand();
+  await git.getOriginUrl();
+  // await getRepoList(repos);
 }

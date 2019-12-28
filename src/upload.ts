@@ -4,10 +4,9 @@ import * as Octokit from '@octokit/rest';
 
 export class Upload {
   github: Github;
-  config: Configuration;
-  constructor() {
-    this.github = new Github();
-    this.config = new Configuration();
+  // config: Configuration;
+  constructor(config: Pick<Configuration, 'authConfig' | 'repoConfig'>) {
+    this.github = new Github(config);
   }
 
   async createIssue(issueInfo: IssueInfo) {
@@ -18,11 +17,11 @@ export class Upload {
     return await this.github.updateIssue(issueInfo);
   }
 
-  async getIssues(param?: Omit<Octokit.IssuesListForRepoParams,'repo' | 'owner'>) {
+  async getIssues(param?: Omit<Octokit.IssuesListForRepoParams, 'repo' | 'owner'>) {
     return await this.github.getIssues(param);
   }
 
-  async getPullRequests(param?: Omit<Octokit.PullsListParams,'repo' | 'owner'>) {
+  async getPullRequests(param?: Omit<Octokit.PullsListParams, 'repo' | 'owner'>) {
     return await this.github.getPullRequests(param);
   }
 
