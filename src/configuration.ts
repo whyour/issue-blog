@@ -29,6 +29,7 @@ export class Configuration {
   async getRepoFromWorkSpace() {
     const git = new GitCommand();
     const remoteUrl = await git.getOriginUrl();
+    console.log(remoteUrl);
     const [, owner, repo] = remoteUrl.match(/(?<=\.com[\:|\/])([\w-]+)\/([\w-]+)(?=\.git)/) as Array<string>;
     return { owner, repo };
   }
