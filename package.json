@@ -86,6 +86,12 @@
 					"default": "",
 					"description": "token",
 					"scope": "window"
+				},
+				"issue.isCustomRepo": {
+					"type": "string",
+					"default": "",
+					"description": "isCustomRepo",
+					"scope": "window"	
 				}
 			}
 		}
@@ -112,7 +118,8 @@
 	"dependencies": {
 		"@octokit/rest": "^16.36.0",
 		"js-yaml": "^3.13.1",
-		"open": "^7.0.0"
+		"open": "^7.0.0",
+		"simple-git": "^1.129.0"
 	},
 	"__metadata": {
 		"id": "af5d7c94-6362-4e44-bab4-4c0b9e40d14f",

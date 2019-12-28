@@ -1,6 +1,7 @@
 import { AuthConfiguration, RepoConfiguration } from './github';
 import * as vscode from 'vscode';
 import * as Octokit from '@octokit/rest';
+import { GitCommand } from './git';
 
 export class Configuration {
   configuration: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration();
@@ -9,14 +10,27 @@ export class Configuration {
   constructor() {
     this.getConfiguration();
   }
+
   async getConfiguration() {
     const token: string | undefined = this.configuration.get('issue.token');
     const username: string | undefined = this.configuration.get('issue.username');
     const password: string | undefined = this.configuration.get('issue.password');
     const owner: string | undefined = this.configuration.get('issue.owner');
     const repo: string | undefined = this.configuration.get('issue.repo');
-    this.repoConfig = { owner: owner || '', repo: repo || '' };
+    const isCustomRepo: boolean | undefined = this.configuration.get('issue.isCustomRepo');
     this.authConfig = { token, username, password };
+    if (!isCustomRepo) {
+      this.repoConfig = await this.getRepoFromWorkSpace();
+      return;
+    }
+    this.repoConfig = { owner: owner || '', repo: repo || '' };
+  }
+
+  async getRepoFromWorkSpace() {
+    const git = new GitCommand();
+    const remoteUrl = await git.getOriginUrl();
+    const [, owner, repo] = remoteUrl.match(/(?<=\.com[\:|\/])([\w-]+)\/([\w-]+)(?=\.git)/) as Array<string>;
+    return { owner, repo };
   }
 
   async promptAuthConfiguration(): Promise<AuthConfiguration> {
@@ -105,13 +119,15 @@ export class Configuration {
 
 export async function checkConfiguration() {
   const configuration = new Configuration();
-  const { authConfig, repoConfig } = configuration;
+  await configuration.getConfiguration();
+  let { authConfig, repoConfig } = configuration;
   if (!authConfig.token && (!authConfig.username || !authConfig.password)) {
-    await configuration.promptAuthConfiguration();
+    authConfig = await configuration.promptAuthConfiguration();
   }
   if (!repoConfig.owner || !repoConfig.repo) {
-    await configuration.promptRepoConfiguration();
+    repoConfig = await configuration.promptRepoConfiguration();
   }
+  return { authConfig, repoConfig };
 }
 
 export async function getRepoList(repos: Octokit.Response<Octokit.ReposListForOrgResponseItem[]>) {

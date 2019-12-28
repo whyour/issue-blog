@@ -22,11 +22,12 @@ export class IssueInfo {
 
 export class Github {
   octokit: Octokit;
-  configuration: Configuration = new Configuration();
   repo: RepoConfiguration;
-  constructor() {
-    const auth = this.checkAuthConfiguration(this.configuration.authConfig);
-    this.repo = this.checkRepoConfiguration(this.configuration.repoConfig);
+  constructor(config: Pick<Configuration, 'authConfig' | 'repoConfig'>) {
+    const auth = this.checkAuthConfiguration(config.authConfig);
+    console.log(auth);
+    
+    this.repo = this.checkRepoConfiguration(config.repoConfig);
     this.octokit = new Octokit({
       auth: auth
     });
