@@ -25,8 +25,6 @@ export class Github {
   repo: RepoConfiguration;
   constructor(config: Pick<Configuration, 'authConfig' | 'repoConfig'>) {
     const auth = this.checkAuthConfiguration(config.authConfig);
-    console.log(auth);
-    
     this.repo = this.checkRepoConfiguration(config.repoConfig);
     this.octokit = new Octokit({
       auth: auth

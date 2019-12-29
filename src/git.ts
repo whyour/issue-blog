@@ -23,7 +23,7 @@ export class GitCommand {
       if (vscode.window.activeTextEditor) {
         const filePath = vscode.window.activeTextEditor.document.uri.fsPath;
         for (const folder of folders) {
-          if (filePath.indexOf(folder.uri.fsPath)) {
+          if (filePath.indexOf(folder.uri.fsPath) !== -1) {
             return folder.uri.fsPath;
           }
         }
