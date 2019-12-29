@@ -7,9 +7,7 @@ export class Configuration {
   configuration: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration();
   repoConfig: RepoConfiguration = new RepoConfiguration();
   authConfig: AuthConfiguration = new AuthConfiguration();
-  constructor() {
-    this.getConfiguration();
-  }
+  constructor() {}
 
   async getConfiguration() {
     const token: string | undefined = this.configuration.get('issue.token');
@@ -21,17 +19,22 @@ export class Configuration {
     this.authConfig = { token, username, password };
     if (!isCustomRepo) {
       this.repoConfig = await this.getRepoFromWorkSpace();
-      return;
+      if (this.repoConfig.owner && this.repoConfig.repo) {
+        return;
+      }
     }
     this.repoConfig = { owner: owner || '', repo: repo || '' };
   }
 
   async getRepoFromWorkSpace() {
     const git = new GitCommand();
-    const remoteUrl = await git.getOriginUrl();
-    console.log(remoteUrl);
-    const [, owner, repo] = remoteUrl.match(/(?<=\.com[\:|\/])([\w-]+)\/([\w-]+)(?=\.git)/) as Array<string>;
-    return { owner, repo };
+    let remoteUrl = await git.getOriginUrl();
+    if (remoteUrl) {
+      const [, owner = '', repo = ''] = remoteUrl.match(/(?<=\.com[\:|\/])([\w-]+)\/([\w-]+)(?=\.git)/) as Array<string>;
+      return { owner, repo };
+    } else {
+      return { owner: '', repo: '' };
+    }
   }
 
   async promptAuthConfiguration(): Promise<AuthConfiguration> {
