@@ -10,7 +10,7 @@
 	],
 	"icon": "resource/images/blogger.png",
 	"description": "A vscode plugin to create a blog with issue",
-	"version": "0.0.11",
+	"version": "0.0.12",
 	"publisher": "whyour",
 	"repository": {
 		"url": "https://github.com/whyour/issue-blog",
