@@ -19,8 +19,14 @@ export class GitCommand {
 
   getRootPath() {
     if (vscode.workspace.workspaceFolders) { 
+      const folders = vscode.workspace.workspaceFolders;
       if (vscode.window.activeTextEditor) {
-        return vscode.window.activeTextEditor.document.uri.fsPath;
+        const filePath = vscode.window.activeTextEditor.document.uri.fsPath;
+        for (const folder of folders) {
+          if (filePath.indexOf(folder.uri.fsPath)) {
+            return folder.uri.fsPath;
+          }
+        }
       } 
       else {
         return vscode.workspace.workspaceFolders[0].uri.fsPath;
