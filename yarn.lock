@@ -77,10 +77,10 @@
     once "^1.4.0"
     universal-user-agent "^4.0.0"
 
-"@octokit/rest@^16.40.0":
-  version "16.40.0"
-  resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-16.40.0.tgz#a2b5dee3486aee5543a92f2a3bdb2ed391229e8c"
-  integrity sha512-owk1H7XRSGrs9aE+phHuwYLuECSOBmanUNLBTb6VzMHELm9bZwvyK3US7SnVHxlmnlFUf1n7U/n0G/1PccSH/Q==
+"@octokit/rest@^16.40.1":
+  version "16.40.1"
+  resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-16.40.1.tgz#211e9c8baa0cc86726ad86f7369425975e928f4f"
+  integrity sha512-H8Twi0NfeQYrpsQ2T63vww9DQ5oKwWl89ZTZyMOVJwdgIPAIn969HqQPtBQMWq26qx+VkYi/WlhFzaZYabN2yg==
   dependencies:
     "@octokit/auth-token" "^2.4.0"
     "@octokit/plugin-paginate-rest" "^1.1.1"
