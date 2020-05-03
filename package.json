@@ -119,7 +119,7 @@
 		"@octokit/rest": "^17.6.0",
 		"js-yaml": "^3.13.1",
 		"open": "^7.0.3",
-		"simple-git": "^2.2.0"
+		"simple-git": "^2.3.0"
 	},
 	"__metadata": {
 		"id": "af5d7c94-6362-4e44-bab4-4c0b9e40d14f",
