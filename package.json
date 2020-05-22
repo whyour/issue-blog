@@ -117,7 +117,7 @@
 	},
 	"dependencies": {
 		"@octokit/rest": "^17.9.2",
-		"js-yaml": "^3.13.1",
+		"js-yaml": "^3.14.0",
 		"open": "^7.0.4",
 		"simple-git": "^2.5.0"
 	},
