@@ -116,7 +116,7 @@
 		"vscode-test": "^1.4.0"
 	},
 	"dependencies": {
-		"@octokit/rest": "^17.9.2",
+		"@octokit/rest": "^17.9.3",
 		"js-yaml": "^3.14.0",
 		"open": "^7.0.4",
 		"simple-git": "^2.5.0"
