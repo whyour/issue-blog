@@ -1,4 +1,4 @@
-import * as Octokit from '@octokit/rest';
+import {Octokit} from '@octokit/rest'
 import { Configuration } from './configuration';
 
 export class AuthConfiguration {

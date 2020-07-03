@@ -4,7 +4,7 @@ import * as path from 'path';
 import { Upload } from './upload';
 import { IssueInfo } from './github';
 import { parse, stringify } from './yaml';
-import * as Octokit from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 
 export async function markdownParse(upload: Upload): Promise<IssueInfo | Octokit.IssuesUpdateParamsDeprecatedAssignee> {
   if (window.activeTextEditor) {
@@ -23,11 +23,12 @@ export async function markdownParse(upload: Upload): Promise<IssueInfo | Octokit
       return { title, body, issue_number };
     } else {
       window.showInformationMessage('请打开markdown文档再执行该命令');
+      return {};
     }
   } else {
     window.showInformationMessage('请打开markdown文档再执行该命令');
+    return {};
   }
-  return { title: '', body: '', issue_number: undefined };
 }
 
 export function markdownStringify(issue: Octokit.IssuesCreateResponse): string {

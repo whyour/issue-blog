@@ -5,7 +5,7 @@ import { checkConfiguration, getRepoList } from "./configuration";
 import { Upload } from "./upload";
 import { IssueInfo } from "./github";
 import { markdownParse, getFileValue, getFileContent, markdownStringify } from "./markdown";
-import * as Octokit from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 import * as open from 'open';
 import { GitCommand } from './git';
 
@@ -13,6 +13,9 @@ export async function createIssue() {
   const config = await checkConfiguration();
   const upload = new Upload(config);
   const result: IssueInfo = await markdownParse(upload);
+  if (!result) {
+    return;
+  }
   const issue = await upload.createIssue(result);
   const { number, html_url } = issue.data;
   const path = vscode.window.activeTextEditor!.document.fileName;
@@ -30,8 +33,8 @@ export async function updateIssue() {
     vscode.window.showErrorMessage('当前文档尚未关联issue，请先创建issue或者手动在yaml header中添加issue_number指定要更新的issue');
     return;
   }
-  await upload.updateIssue(result as Octokit.IssuesUpdateParamsDeprecatedAssignee);
-  vscode.window.showInformationMessage('更新issue成功');
+  const { data: {number, html_url} } = await upload.updateIssue(result as Octokit.IssuesUpdateParamsDeprecatedAssignee);
+  vscode.window.showInformationMessage('更新issue成功', html_url);
 }
 
 export async function getIssues() {
