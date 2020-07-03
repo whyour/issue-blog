@@ -1,6 +1,6 @@
 import { Github, IssueInfo } from './github';
 import { Configuration } from './configuration';
-import * as Octokit from '@octokit/rest';
+import { Octokit } from '@octokit/rest';
 
 export class Upload {
   github: Github;
