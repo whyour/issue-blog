@@ -2,7 +2,13 @@ version: 1
 update_configs:
   - package_manager: "javascript"
     directory: "/"
-    update_schedule: "live"
+    update_schedule: "weekly"
+    allowed_updates:
+      - match:
+          update_type: "security"
+    ignored_updates:
+      - match:
+          dependency_name: "@octokit/rest"
     commit_message:
       prefix: 'chore'
       include_scope: true
