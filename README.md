@@ -20,22 +20,21 @@ A vscode plugin to create a blog with issue
 - [x] 支持更新已存在的 issue
 - [x] 支持获取仓库中的 issue 列表，可选择 issue 在默认浏览器中打开
 - [x] 支持获取仓库中的 pr 列表，可选择 pr 在默认浏览器中打开
-- [x] 默认获取当前项目中的`remote`地址
 
 ## Commands
 
 ```json
 {
   "command": "extension.createIssue",
-  "title": "Create Issue"
+  "title": "Issue: Create Issue"
 },
 {
   "command": "extension.updateIssue",
-  "title": "Update Issue"
+  "title": "Issue: Update Issue"
 },
 {
   "command": "extension.createBlog", // Create a new empty document
-  "title": "Create Blog"
+  "title": "Issue: Create Blog"
 }，
 {
   "command": "extension.getIssues",
@@ -54,17 +53,18 @@ A vscode plugin to create a blog with issue
 Document images can be used to [v - picgo](https://github.com/PicGo/vs-picgo) can use the default [SM. MS](https://sm.ms/) after upload first, and then create issue, will automatically be uploaded to the lot, if the reference images, local created after the issue will be unable to reference pictures.
 
 ## Extension Settings
-* `// username/password 和 token 只需要提供一种`
-* `// isCustomRepo 为 true 时, 需要设置 issue.owner 和 issue.repo, isCustomRepo 为 false 时, 会直接从当前项目中获取 owner 和 repo`
+* `// 目前支持 github oauth 认证`
+* `// 需要手动设置对应的 github 仓储名称`
 
-* `issue.username`: 设置 github 用户名
-* `issue.password`: 设置 github 密码
 * `issue.token`: 设置 github person access token
 * `issue.owner`: 设置 github 仓库 owner
 * `issue.repo`: 设置 github issue-blog 仓库名
-* `issue.isCustomRepo`: 设置是否自定义获取的仓库地址
 
 ## Version Feature
+### 1.0.1
+* 移除`isCustomRepo`参数
+* 采用 github oauth 认证
+
 ### 0.0.8
 
 * 默认从当前项目中获取`owner`和`repo`，需要自定义设置项目地址时，要把`isCustomRepo`设为`true`

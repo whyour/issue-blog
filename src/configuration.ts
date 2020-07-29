@@ -17,14 +17,14 @@ export class Configuration {
     const password: string | undefined = this.configuration.get('issue.password');
     const owner: string | undefined = this.configuration.get('issue.owner');
     const repo: string | undefined = this.configuration.get('issue.repo');
-    const isCustomRepo: boolean | undefined = this.configuration.get('issue.isCustomRepo');
+    // const isCustomRepo: boolean | undefined = this.configuration.get('issue.isCustomRepo');
     this.authConfig = { token, username, password };
-    if (!isCustomRepo) {
-      this.repoConfig = await this.getRepoFromWorkSpace();
-      if (this.repoConfig.owner && this.repoConfig.repo) {
-        return;
-      }
-    }
+    // if (!isCustomRepo) {
+    //   this.repoConfig = await this.getRepoFromWorkSpace();
+    //   if (this.repoConfig.owner && this.repoConfig.repo) {
+    //     return;
+    //   }
+    // }
     this.repoConfig = { owner: owner || '', repo: repo || '' };
   }
 
