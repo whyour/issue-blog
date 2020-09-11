@@ -121,7 +121,7 @@
 		"@octokit/rest": "16.43.2",
 		"express": "^4.17.1",
 		"js-yaml": "^3.14.0",
-		"node-fetch": "^2.6.0",
+		"node-fetch": "^2.6.1",
 		"open": "^7.0.4",
 		"simple-git": "^2.11.0"
 	},
