@@ -40,17 +40,19 @@ export async function updateIssue() {
 export async function getIssues() {
   const config = await checkConfiguration();
   const upload = new Upload(config);	
-  const issues = await upload.getIssues({state: 'open'});
+  const issues = await upload.getIssues({ state: 'open' });
   if (issues.data && issues.data.length > 0) {
     const _issues = issues.data.map(x => {
-      return { label: x.title, description: x.html_url };
+      return { label: x.title, description: x.html_url, issue: x };
     });
     const _issue = await vscode.window.showQuickPick(
       _issues,
       { placeHolder: 'Select the issue you want to open' }
     );  
     if (_issue) {
-      await open(_issue.description);
+      const content = markdownStringify(_issue.issue as Octokit.IssuesCreateResponse);
+      await vscode.workspace.openTextDocument({ language: 'markdown', content });
+      vscode.window.showInformationMessage('点击链接查看issue详情', _issue.issue.html_url);
     }
   } else {
     vscode.window.showInformationMessage('暂无issue');

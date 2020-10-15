@@ -20,6 +20,7 @@ A vscode plugin to create a blog with issue
 - [x] 支持更新已存在的 issue
 - [x] 支持获取仓库中的 issue 列表，可选择 issue 在默认浏览器中打开
 - [x] 支持获取仓库中的 pr 列表，可选择 pr 在默认浏览器中打开
+- [x] 支持在vscode中直接打开issue
 
 ## Commands
 
@@ -61,6 +62,9 @@ Document images can be used to [v - picgo](https://github.com/PicGo/vs-picgo) ca
 * `issue.repo`: 设置 github issue-blog 仓库名
 
 ## Version Feature
+### 1.0.2
+* 支持获取issue列表后在vscode中打开
+
 ### 1.0.1
 * 移除`isCustomRepo`参数
 * 采用 github oauth 认证
