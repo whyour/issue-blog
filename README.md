@@ -11,14 +11,6 @@ GitHub: [https://github.com/whyour/issue-blog](https://github.com/whyour/issue-b
 
 Vscode Market: [https://marketplace.visualstudio.com/items?itemName=whyour.issue-blog](https://marketplace.visualstudio.com/items?itemName=whyour.issue-blog)
 
-* 新建空文档 `Create a new empty document`
-
-![create blog](resource/images/one.jpg)
-
-* 新建 issue `Create issue`
-
-![create issue](resource/images/two.jpg)
-
 ## Features
 
 - [x] 在 vscode 中以当前文档来在指定仓库中创建 issue
@@ -28,6 +20,14 @@ Vscode Market: [https://marketplace.visualstudio.com/items?itemName=whyour.issue
 - [x] 支持获取仓库中的 issue 列表，可选择 issue 在默认浏览器中打开
 - [x] 支持获取仓库中的 pr 列表，可选择 pr 在默认浏览器中打开
 - [x] 支持在 vscode 中直接打开 issue
+
+* 新建空文档 `Create a new empty document`
+
+![create blog](resource/images/one.jpg)
+
+* 新建 issue `Create issue`
+
+![create issue](resource/images/two.jpg)
 
 ## Commands
 
