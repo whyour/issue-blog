@@ -1,8 +1,15 @@
 # Issue Blog
 
-一个用 github issue 创建博客的 vscode 插件
+[![Version](https://vsmarketplacebadge.apphb.com/version/whyour.issue-blog.svg)](https://marketplace.visualstudio.com/items?itemName=whyour.issue-blog)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs/whyour.issue-blog.svg)](https://marketplace.visualstudio.com/items?itemName=whyour.issue-blog)
+[![Ratings](https://vsmarketplacebadge.apphb.com/rating/whyour.issue-blog.svg)](https://vsmarketplacebadge.apphb.com/rating/whyour.issue-blog.svg)
+[![Build Status](https://travis-ci.org/whyour/issue-blog.svg?branch=master)](https://travis-ci.org/whyour/issue-blog)
 
-A vscode plugin to create a blog with issue
+## 安装 issue-blog 插件
+
+GitHub: [https://github.com/whyour/issue-blog](https://github.com/whyour/issue-blog)
+
+Vscode Market: [https://marketplace.visualstudio.com/items?itemName=whyour.issue-blog](https://marketplace.visualstudio.com/items?itemName=whyour.issue-blog)
 
 * 新建空文档 `Create a new empty document`
 
@@ -20,7 +27,7 @@ A vscode plugin to create a blog with issue
 - [x] 支持更新已存在的 issue
 - [x] 支持获取仓库中的 issue 列表，可选择 issue 在默认浏览器中打开
 - [x] 支持获取仓库中的 pr 列表，可选择 pr 在默认浏览器中打开
-- [x] 支持在vscode中直接打开issue
+- [x] 支持在 vscode 中直接打开 issue
 
 ## Commands
 
