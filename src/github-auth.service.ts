@@ -57,7 +57,7 @@ export class GitHubOAuthService {
           const token = params.get('access_token') as string;
           const user = await this.getUser(token, host);
           resolve({ token, user });
-        } catch (err: any) {
+        } catch (err) {
           const error = new Error(err);
           reject(error);
         }
