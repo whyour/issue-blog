@@ -23,11 +23,11 @@ export async function markdownParse(upload: Upload): Promise<IssueInfo | Octokit
       return { title, body, issue_number };
     } else {
       window.showInformationMessage('请打开markdown文档再执行该命令');
-      return {};
+      return null as any;
     }
   } else {
     window.showInformationMessage('请打开markdown文档再执行该命令');
-    return {};
+    return null as any;
   }
 }
 

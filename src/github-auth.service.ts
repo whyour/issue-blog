@@ -1,6 +1,6 @@
 import * as express from 'express';
 import { Server } from 'http';
-import fetch from 'node-fetch';
+import got from 'got';
 import { URL, URLSearchParams } from 'url';
 import * as vscode from 'vscode';
 import { rejects } from 'assert';
@@ -11,6 +11,7 @@ export class GitHubOAuthService {
 
   constructor(public port: number) {
     this.app = express();
+    this.port = port;
     this.app.use(express.json(), express.urlencoded({ extended: false }));
   }
 
@@ -21,8 +22,8 @@ export class GitHubOAuthService {
     return new Promise((resolve, reject) => {
       this.app.get('/callback', async (req: { param: (arg0: string) => string; }, res: { send: (arg0: string) => void; }) => {
         try {
-          const params = new URLSearchParams(await (await this.getToken(req.param('code'), host)).text());
-  
+          const params = new URLSearchParams(await this.getToken(req.param('code'), host));
+
           res.send(`
           <!doctype html>
           <html lang="en">
@@ -52,11 +53,11 @@ export class GitHubOAuthService {
           </html>
           `);
           this.server.close();
-  
+
           const token = params.get('access_token') as string;
           const user = await this.getUser(token, host);
           resolve({ token, user });
-        } catch (err) {
+        } catch (err: any) {
           const error = new Error(err);
           reject(error);
         }
@@ -64,36 +65,22 @@ export class GitHubOAuthService {
     })
   }
 
-  public getToken(code: string, host: URL) {
+  public async getToken(code: string, host: URL) {
     const params = new URLSearchParams();
     params.append('client_id', 'e32c4cda0b829b161944');
     params.append('client_secret', '2a883c7fcaf9617f67f9157245d498495dd46032');
     params.append('code', code);
 
-    const promise = fetch(`https://${host.hostname}/login/oauth/access_token`, {
-      method: 'POST',
-      body: params,
+    const res = await got.post(`https://${host.hostname}/login/oauth/access_token`, {
+      form: params
     });
-
-    promise.catch((err: any) => {
-      // Commons.LogException(err, 'Sync: Invalid GitHub Enterprise URL.', true);
-    });
-
-    return promise;
+    return res.body;
   }
 
   public async getUser(token: string, host: URL) {
-    const promise = fetch(`https://api.${host.hostname}/user`, {
-      method: 'GET',
-      headers: { Authorization: `token ${token}` },
-    });
-
-    promise.catch((err: any) => {
-      // Commons.LogException(err, 'Sync: Invalid GitHub Enterprise URL.', true);
-    });
-
-    const res = await promise;
-    const json = await res.json();
-    return json.login;
+    const body = await got.get(`https://api.${host.hostname}/user`, {
+      headers: { Authorization: `token ${token}` }
+    }).json();
+    return (body as any).name;
   }
 }
