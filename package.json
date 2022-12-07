@@ -123,7 +123,7 @@
 		"got": "^11.8.1",
 		"js-yaml": "^3.14.0",
 		"open": "^7.0.4",
-		"simple-git": "^3.5.0"
+		"simple-git": "^3.15.0"
 	},
 	"__metadata": {
 		"id": "af5d7c94-6362-4e44-bab4-4c0b9e40d14f",
