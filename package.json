@@ -120,7 +120,7 @@
 	"dependencies": {
 		"@octokit/rest": "16.43.2",
 		"express": "^4.17.1",
-		"got": "^11.8.1",
+		"got": "^11.8.5",
 		"js-yaml": "^3.14.0",
 		"open": "^7.0.4",
 		"simple-git": "^3.5.0"
