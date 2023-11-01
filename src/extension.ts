@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { createIssue, getIssues, createBlog, getRepos, updateIssue, getPullRequests } from './commands';
+import { createBlog, createIssue, getIssues, getPullRequests, getRepos, updateIssue } from './commands';
 export function activate(context: vscode.ExtensionContext) {
   console.log('Congratulations, your extension "issue-blog" is now active!');
   const _createIssue = vscode.commands.registerCommand(

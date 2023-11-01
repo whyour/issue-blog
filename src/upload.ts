@@ -1,6 +1,6 @@
-import { Github, IssueInfo } from './github';
+import { RestEndpointMethodTypes } from '@octokit/rest';
 import { Configuration } from './configuration';
-import { Octokit } from '@octokit/rest';
+import { Github } from './github';
 
 export class Upload {
   github: Github;
@@ -9,23 +9,27 @@ export class Upload {
     this.github = new Github(config);
   }
 
-  async createIssue(issueInfo: IssueInfo) {
+  async createIssue(issueInfo: RestEndpointMethodTypes['issues']['create']['parameters']) {
     return await this.github.createIssue(issueInfo);
   }
 
-  async updateIssue(issueInfo: Octokit.IssuesUpdateParamsDeprecatedAssignee) {
+  async updateIssue(issueInfo: RestEndpointMethodTypes['issues']['update']['parameters']) {
     return await this.github.updateIssue(issueInfo);
   }
 
-  async getIssues(param?: Omit<Octokit.IssuesListForRepoParams, 'repo' | 'owner'>) {
+  async getIssues(param?: Omit<RestEndpointMethodTypes['issues']['listForRepo']['parameters'], 'repo' | 'owner'>) {
     return await this.github.getIssues(param);
   }
 
-  async getPullRequests(param?: Omit<Octokit.PullsListParams, 'repo' | 'owner'>) {
+  async getPullRequests(param?: Omit<RestEndpointMethodTypes['pulls']['list']['parameters'], 'repo' | 'owner'>) {
     return await this.github.getPullRequests(param);
   }
 
   async getRepos() {
     return await this.github.getRepos();
+  }
+
+  async getUser() {
+    return await this.github.getUser();
   }
 }

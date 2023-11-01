@@ -17,17 +17,10 @@
 		"type": "git"
 	},
 	"engines": {
-		"vscode": "^1.40.0"
+		"vscode": "^1.83.0"
 	},
 	"categories": [
 		"Other"
-	],
-	"activationEvents": [
-		"onCommand:extension.createIssue",
-		"onCommand:extension.updateIssue",
-		"onCommand:extension.getIssues",
-		"onCommand:extension.createBlog",
-		"onCommand:extension.getPullRequests"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -97,33 +90,35 @@
 		}
 	},
 	"scripts": {
-		"vscode:prepublish": "yarn run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "yarn run compile",
-		"test": "node ./out/test/runTest.js"
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/express": "^4.17.6",
-		"@types/glob": "^7.1.2",
+		"@types/express": "^4.17.20",
 		"@types/got": "^9.6.12",
-		"@types/js-yaml": "^3.12.5",
-		"@types/mocha": "^7.0.2",
-		"@types/node": "^14.0.14",
-		"@types/vscode": "^1.40.0",
-		"glob": "^7.1.6",
-		"mocha": "^8.0.1",
-		"tslint": "^6.1.2",
-		"typescript": "^3.9.6",
-		"vscode-test": "^1.4.0"
+		"@types/js-yaml": "^4.0.8",
+    "@types/vscode": "^1.83.0",
+    "@types/mocha": "^10.0.3",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "eslint": "^8.52.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "typescript": "^5.2.2",
+    "@vscode/test-electron": "^2.3.6"
 	},
 	"dependencies": {
-		"@octokit/rest": "16.43.2",
-		"express": "^4.17.1",
-		"got": "^11.8.5",
-		"js-yaml": "^3.14.0",
-		"open": "^7.0.4",
-		"simple-git": "^3.5.0"
+		"@octokit/rest": "20.0.2",
+		"express": "^4.18.2",
+		"got": "^11.0.0",
+		"js-yaml": "^4.1.0",
+		"open": "^8.4.2",
+		"simple-git": "^3.20.0"
 	},
 	"__metadata": {
 		"id": "af5d7c94-6362-4e44-bab4-4c0b9e40d14f",

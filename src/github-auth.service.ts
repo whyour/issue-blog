@@ -1,9 +1,7 @@
-import * as express from 'express';
-import { Server } from 'http';
+import express from 'express';
 import got from 'got';
+import { Server } from 'http';
 import { URL, URLSearchParams } from 'url';
-import * as vscode from 'vscode';
-import { rejects } from 'assert';
 
 export class GitHubOAuthService {
   public app: express.Express;

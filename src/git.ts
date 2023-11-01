@@ -1,4 +1,4 @@
-import * as gitJs from 'simple-git/promise';
+import gitJs from 'simple-git';
 import * as vscode from 'vscode';
 
 export class GitCommand {
