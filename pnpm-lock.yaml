@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@octokit/rest':
     specifier: 20.0.2
@@ -8,8 +12,8 @@ dependencies:
     specifier: ^4.18.2
     version: 4.18.2
   got:
-    specifier: ^11.0.0
-    version: 11.0.0
+    specifier: ^11.8.5
+    version: 11.8.5
   js-yaml:
     specifier: ^4.1.0
     version: 4.1.0
@@ -282,8 +286,8 @@ packages:
     dev: true
     optional: true
 
-  /@sindresorhus/is@2.1.1:
-    resolution: {integrity: sha512-/aPsuoj/1Dw/kzhkgz+ES6TxG0zfTMGLwuK2ZG00k/iJzYHTLCE8mVU8EPqEOp/lmxPoq1C1C9RYToRKb2KEfg==}
+  /@sindresorhus/is@4.6.0:
+    resolution: {integrity: sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==}
     engines: {node: '>=10'}
     dev: false
 
@@ -725,9 +729,9 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /cacheable-lookup@4.3.0:
-    resolution: {integrity: sha512-PTUoCeIjj2awloqyVRUL33SjquU1Qv5xuDalYY8WAzd9NnUMUivZnGsOzVsMfg2YuMsWXaXkd/hjnsVoWc/3YA==}
-    engines: {node: '>=10'}
+  /cacheable-lookup@5.0.4:
+    resolution: {integrity: sha512-2/kNscPhpcxrOigMZzbiWF7dz8ilhb/nIHU3EyZiXWXpeq/au8qJ8VhdftMkty3n7Gj6HIGalQG8oiBNB3AJgA==}
+    engines: {node: '>=10.6.0'}
     dev: false
 
   /cacheable-request@7.0.4:
@@ -882,11 +886,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /decompress-response@5.0.0:
-    resolution: {integrity: sha512-TLZWWybuxWgoW7Lykv+gq9xvzOsUjQ9tF09Tj6NSTYGMTCHNXzrPnD6Hi+TgZq19PyTAGH4Ll/NIM/eTGglnMw==}
+  /decompress-response@6.0.0:
+    resolution: {integrity: sha512-aW35yZM6Bb/4oJlZncMH2LCoZtJXTRxES17vE3hoRiowU2kWHaJKFkSBDnDR+cm9J+9QhXmREyIfv0pji9ejCQ==}
     engines: {node: '>=10'}
     dependencies:
-      mimic-response: 2.1.0
+      mimic-response: 3.1.0
     dev: false
 
   /deep-is@0.1.4:
@@ -1338,18 +1342,17 @@ packages:
       get-intrinsic: 1.2.2
     dev: false
 
-  /got@11.0.0:
-    resolution: {integrity: sha512-6PjDdCa2yPMuxhoBp6TIdHUm5gv8rBEfr055vJG9CqznZBw4rFEwNifI5JxfLhu41xVHRrFsVtseFOjrcIy1/w==}
+  /got@11.8.5:
+    resolution: {integrity: sha512-o0Je4NvQObAuZPHLFoRSkdG2lTgtcynqymzg2Vupdx6PorhaT5MCbIyXG6d4D94kk8ZG57QeosgdiqfJWhEhlQ==}
     engines: {node: '>=10.19.0'}
     dependencies:
-      '@sindresorhus/is': 2.1.1
+      '@sindresorhus/is': 4.6.0
       '@szmarczak/http-timer': 4.0.6
       '@types/cacheable-request': 6.0.3
       '@types/responselike': 1.0.2
-      cacheable-lookup: 4.3.0
+      cacheable-lookup: 5.0.4
       cacheable-request: 7.0.4
-      decompress-response: 5.0.0
-      get-stream: 5.2.0
+      decompress-response: 6.0.0
       http2-wrapper: 1.0.3
       lowercase-keys: 2.0.0
       p-cancelable: 2.1.1
@@ -1688,9 +1691,9 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /mimic-response@2.1.0:
-    resolution: {integrity: sha512-wXqjST+SLt7R009ySCglWBCFpjUygmCIfD790/kVbiGmUgfYGuB14PiTd5DwVxSV4NcYHjzMkoj5LjQZwTQLEA==}
-    engines: {node: '>=8'}
+  /mimic-response@3.1.0:
+    resolution: {integrity: sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==}
+    engines: {node: '>=10'}
     dev: false
 
   /minimatch@3.1.2:
