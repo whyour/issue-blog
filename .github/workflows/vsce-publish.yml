@@ -1,16 +1,21 @@
 name: Deploy Extension
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: npm install
-      - uses: lannonbr/vsce-action@3.0.0
+      - uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          args: "publish -p $VSCE_TOKEN"
-        env:
-          VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+          node-version: 20
+
+      - name: Install vsce
+        run: |
+          npm install
+          npm install --global @vscode/vsce
+
+      - name: Publish
+        run: vsce publish -p ${{ secrets.VSCE_TOKEN }}

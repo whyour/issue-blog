@@ -1,9 +1,7 @@
-import * as express from 'express';
-import { Server } from 'http';
-import got from 'got';
-import { URL, URLSearchParams } from 'url';
-import * as vscode from 'vscode';
-import { rejects } from 'assert';
+import express from "express";
+import got from "got";
+import { Server } from "http";
+import { URL, URLSearchParams } from "url";
 
 export class GitHubOAuthService {
   public app: express.Express;
@@ -16,15 +14,22 @@ export class GitHubOAuthService {
   }
 
   public async StartProcess(cmd?: string) {
-    const host = new URL('https://github.com');
+    const host = new URL("https://github.com");
 
     this.server = this.app.listen(this.port);
     return new Promise((resolve, reject) => {
-      this.app.get('/callback', async (req: { param: (arg0: string) => string; }, res: { send: (arg0: string) => void; }) => {
-        try {
-          const params = new URLSearchParams(await this.getToken(req.param('code'), host));
+      this.app.get(
+        "/callback",
+        async (
+          req: { param: (arg0: string) => string },
+          res: { send: (arg0: string) => void }
+        ) => {
+          try {
+            const params = new URLSearchParams(
+              await this.getToken(req.param("code"), host)
+            );
 
-          res.send(`
+            res.send(`
           <!doctype html>
           <html lang="en">
             <head>
@@ -52,35 +57,40 @@ export class GitHubOAuthService {
             </body>
           </html>
           `);
-          this.server.close();
+            this.server.close();
 
-          const token = params.get('access_token') as string;
-          const user = await this.getUser(token, host);
-          resolve({ token, user });
-        } catch (err) {
-          const error = new Error(err);
-          reject(error);
+            const token = params.get("access_token") as string;
+            const user = await this.getUser(token, host);
+            resolve({ token, user });
+          } catch (err) {
+            reject(err);
+          }
         }
-      });
-    })
+      );
+    });
   }
 
   public async getToken(code: string, host: URL) {
     const params = new URLSearchParams();
-    params.append('client_id', 'e32c4cda0b829b161944');
-    params.append('client_secret', '2a883c7fcaf9617f67f9157245d498495dd46032');
-    params.append('code', code);
+    params.append("client_id", "e32c4cda0b829b161944");
+    params.append("client_secret", "2a883c7fcaf9617f67f9157245d498495dd46032");
+    params.append("code", code);
 
-    const res = await got.post(`https://${host.hostname}/login/oauth/access_token`, {
-      form: params
-    });
+    const res = await got.post(
+      `https://${host.hostname}/login/oauth/access_token`,
+      {
+        form: params,
+      }
+    );
     return res.body;
   }
 
   public async getUser(token: string, host: URL) {
-    const body = await got.get(`https://api.${host.hostname}/user`, {
-      headers: { Authorization: `token ${token}` }
-    }).json();
+    const body = await got
+      .get(`https://api.${host.hostname}/user`, {
+        headers: { Authorization: `token ${token}` },
+      })
+      .json();
     return (body as any).name;
   }
 }

@@ -1,9 +1,9 @@
 # Issue Blog
 
-[![Version](https://vsmarketplacebadge.apphb.com/version/whyour.issue-blog.svg)](https://marketplace.visualstudio.com/items?itemName=whyour.issue-blog)
-[![Installs](https://vsmarketplacebadge.apphb.com/installs/whyour.issue-blog.svg)](https://marketplace.visualstudio.com/items?itemName=whyour.issue-blog)
-[![Ratings](https://vsmarketplacebadge.apphb.com/rating/whyour.issue-blog.svg)](https://vsmarketplacebadge.apphb.com/rating/whyour.issue-blog.svg)
-[![Build Status](https://travis-ci.org/whyour/issue-blog.svg?branch=master)](https://travis-ci.org/whyour/issue-blog)
+[![Version](https://vsmarketplacebadges.dev/version/whyour.issue-blog.svg)](https://marketplace.visualstudio.com/items?itemName=whyour.issue-blog)
+[![Installs](https://vsmarketplacebadges.dev/installs/whyour.issue-blog.svg)](https://marketplace.visualstudio.com/items?itemName=whyour.issue-blog)
+[![Ratings](https://vsmarketplacebadges.dev/rating/whyour.issue-blog.svg)](https://vsmarketplacebadge.apphb.com/rating/whyour.issue-blog.svg)
+[![Build Status](https://travis-ci.com/whyour/issue-blog.svg?branch=master)](https://travis-ci.org/whyour/issue-blog)
 
 ## 安装 issue-blog 插件
 
@@ -69,6 +69,9 @@ Document images can be used to [v - picgo](https://github.com/PicGo/vs-picgo) ca
 * `issue.repo`: 设置 github issue-blog 仓库名
 
 ## Version Feature
+### 1.2.0
+* 修复 github api 请求问题
+
 ### 1.0.2
 * 支持获取issue列表后在vscode中打开
 

@@ -1,4 +1,4 @@
-import {Octokit} from '@octokit/rest'
+import { Octokit, RestEndpointMethodTypes } from '@octokit/rest';
 import { Configuration } from './configuration';
 
 export class AuthConfiguration {
@@ -18,6 +18,7 @@ export class RepoConfiguration {
 export class IssueInfo {
   title?: string = '';
   body?: string = '';
+  issue_number?: number;
 }
 
 export class Github {
@@ -27,7 +28,7 @@ export class Github {
     const auth = this.checkAuthConfiguration(config.authConfig);
     this.repo = this.checkRepoConfiguration(config.repoConfig);
     this.octokit = new Octokit({
-      auth: auth
+      auth: auth,
     });
   }
 
@@ -44,34 +45,52 @@ export class Github {
     const { owner = '', repo = '' } = configuration;
     return { owner, repo };
   }
-
-  async getIssues(param?: Omit<Octokit.IssuesListForRepoParams,'repo' | 'owner'>): Promise<Octokit.Response<Octokit.IssuesListForRepoResponseItem[]>> {
-    return this.octokit.issues.listForRepo({...this.repo, ...param});
+  async getIssues(
+    param?: Omit<RestEndpointMethodTypes['issues']['listForRepo']['parameters'], 'repo' | 'owner'>
+  ): Promise<RestEndpointMethodTypes['issues']['listForRepo']['response']> {
+    return this.octokit.issues.listForRepo({ ...this.repo, ...param });
   }
 
-  async getPullRequests(param?: Omit<Octokit.PullsListParams,'repo' | 'owner'>): Promise<Octokit.Response<Octokit.PullsListResponse>> {
-    return this.octokit.pulls.list({...this.repo, ...param});
+  async getPullRequests(
+    param?: Omit<RestEndpointMethodTypes['pulls']['list']['parameters'], 'repo' | 'owner'>
+  ): Promise<RestEndpointMethodTypes['pulls']['list']['response']> {
+    return this.octokit.pulls.list({ ...this.repo, ...param });
   }
 
-  async createIssue({ title = '', body = '' }: IssueInfo): Promise<Octokit.Response<Octokit.IssuesCreateResponse>> {
+  async createIssue({
+    title = '',
+    body = '',
+  }: RestEndpointMethodTypes['issues']['create']['parameters']): Promise<
+    RestEndpointMethodTypes['issues']['create']['response']
+  > {
     return this.octokit.issues.create({ ...this.repo, title, body });
   }
 
-  async updateIssue({ title = '', body = '', issue_number }: Octokit.IssuesUpdateParamsDeprecatedAssignee): Promise<Octokit.Response<Octokit.IssuesUpdateResponse>> {
+  async updateIssue({
+    title = '',
+    body = '',
+    issue_number,
+  }: RestEndpointMethodTypes['issues']['update']['parameters']): Promise<
+    RestEndpointMethodTypes['issues']['update']['response']
+  > {
     return this.octokit.issues.update({ ...this.repo, title, body, issue_number });
   }
 
-  async getRepos(): Promise<Octokit.Response<any>>  {
-    return this.octokit.repos.list();
+  async getRepos(): Promise<RestEndpointMethodTypes['repos']['listForAuthenticatedUser']['response']> {
+    return this.octokit.repos.listForAuthenticatedUser();
   }
 
-  async getEvents(): Promise<Octokit.Response<any>>  {
-    return this.octokit.activity.listNotifications({ all: true });
+  async getEvents(): Promise<RestEndpointMethodTypes['activity']['listNotificationsForAuthenticatedUser']['response']> {
+    return this.octokit.activity.listNotificationsForAuthenticatedUser({ all: true });
     // return this.octokit.activity.listWatchedReposForAuthenticatedUser()
     // return this.octokit.activity.listReceivedEventsForUser({
     //   username: 'whyour',
     //   per_page: 100,
     //   page: 1
     // })
+  }
+
+  async getUser(): Promise<RestEndpointMethodTypes["users"]["getAuthenticated"]["response"]> {
+    return this.octokit.users.getAuthenticated();
   }
 }
